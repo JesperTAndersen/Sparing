@@ -1,0 +1,82 @@
+import java.util.Scanner;
+import java.util.ArrayList;
+
+class DrinkMenu{
+	
+	public static void main(String[] args){
+		ArrayList<String> drinkMenu = new ArrayList<>();
+		
+
+		Scanner scanner = new Scanner(System.in);
+
+		System.out.println();
+		System.out.println("Goddag kunde. Hvad er din Alder: ");
+		String age = scanner.nextLine();
+
+		int ageAsNum = 0;
+
+		try{
+			ageAsNum = Integer.parseInt(age);
+		}catch(NumberFormatException e){
+			ageAsNum = 17;
+			System.out.println(e);
+		}
+		if(ageAsNum >= 18){
+			drinkMenu.add("Vin");
+			drinkMenu.add("Rom & Cola");
+			drinkMenu.add("Gin & Tonic");
+			drinkMenu.add("Absinthe");
+			}		
+			drinkMenu.add("Rød Sodavand");
+			drinkMenu.add("Vand");
+			drinkMenu.add("Børnedrink (noget med mango)");
+			drinkMenu.add("Cocio");
+			
+			System.out.println();
+
+				System.out.println("Menu'en består af følgende:")
+;			int counter = 1;
+			for(String a : drinkMenu){
+			
+				System.out.println(counter + ". " + a);
+				counter++;
+			}
+
+			System.out.println();
+		System.out.println("Så gerne, hvor mange kunne de tænke dem?");	
+		String drinks = scanner.nextLine();
+
+		int drinksNum = 0;
+
+		try{
+			drinksNum = Integer.parseInt(drinks);
+		}catch(NumberFormatException e){
+			drinksNum = 1;
+			System.out.println(e);
+		}
+		System.out.println();
+		ArrayList<String> choices = new ArrayList<>();
+
+		boolean drinkAdded = false;
+		while(choices.size() < drinksNum){
+			System.out.println("Vælg en drink fra listen");
+			String choice = scanner.nextLine();
+			for(String a : drinkMenu){
+				if(choice.equals(a)){
+				choices.add(choice);
+				drinkAdded = true;
+				}
+			}
+			if (drinkAdded == false){
+				System.out.println(choice + " er ikke på menuen, vælg venligst en anden drink.");
+			}	
+				drinkAdded = false;
+
+	}
+
+		System.out.println("Du har bestilt:");
+		for (String a : choices){
+			System.out.println(a);
+		}
+	}
+}
